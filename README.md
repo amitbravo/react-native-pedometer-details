@@ -20,7 +20,9 @@ yarn add react-native-pedometer-details
 <uses-permission android:name = "android.permission.FOREGROUND_SERVICE"/>
 <uses-permission android:name = "android.permission.ACTIVITY_RECOGNITION"/>
 
-
+<application>
+.... 
+// put below code under application
 <receiver android:name = "com.reactnativepedometerdetails.step.background.RebootActionReceiver"
     android:exported = "false">
     <intent-filter >
@@ -40,22 +42,37 @@ yarn add react-native-pedometer-details
     android:name="com.reactnativepedometerdetails.step.background.StepCounterService"
     android:enabled = "true"
     android:exported = "false" />
+</application>
+```
 
 ```
+if you face a kotlin version issue then define kotlin version under app/build.gralde such as:
+buildscript {
+     ...   
+    ext {
+        ....
+        kotlin_version = '1.6.10'
+```        
+        
+
 
 ## Usage
 
 ```js
 import PedometerDetails from 'react-native-pedometer-details';
 
-PedometerDetails.requestPermission().then((permissionsStatuses) => {
+PedometerDetails.requestPermission()
+.then((permissionsStatuses) => {
     if (typeof stateText != 'string' || stateText != 'granted') {
         return;
     }
     PedometerDetails.getDaysSteps(20211211).then(res => {
-        // res.day ==> 20211211
+        // res.day ==> 20211211 (YYYYMMDD format)
         // res.stepCount ==> 100
     });
+})
+.catch(error => {
+    console.log('error to get permission',error)
 });
 
 // For more usage, please see
