@@ -4,7 +4,8 @@ const { PedometerDetails } = NativeModules;
 
 export default class API {
   /**
-   * 根据日期得到步数
+   * 根据日期得到步数 
+    * Get steps by date
    */
   static getDaysSteps(date) {
     if (Platform.OS !== 'android') {
@@ -19,7 +20,7 @@ export default class API {
   }
 
   /**
-   * 检索移动数据库中最近的行走时间
+   * 检索移动数据库中最近的行走时间  //Retrieve the most recent walking time in the mobile database
    */
   static readLastStepsTime() {
     if (Platform.OS !== 'android') {
@@ -31,7 +32,7 @@ export default class API {
   }
 
   /**
-   * 检索移动数据库中最近的行走日期
+   * 检索移动数据库中最近的行走日期  //Retrieve the most recent walk date in the mobile database
    */
    static readLastStepsDate() {
     if (Platform.OS !== 'android') {
@@ -67,7 +68,8 @@ export default class API {
   }
 
   /**
-   * 获取一天中每小时（或一年中的一天、一年中的一周或一年中的一个月）所采取的步骤数
+   * 获取一天中每小时（或一年中的一天、一年中的一周或一年中的一个月）所采取的步骤数 
+   // Get the number of steps taken per hour of the day (or day of the year, week of the year, or month of the year)
    */
   static getStepsByTimeUnit(
     date,
